@@ -29,26 +29,20 @@ class MathDojo2(object):
     def __init__(self):
         self.result = 0
     def add(self, *args):
-        for each in range(0,len(args)):
-            if type(args[each]) == int:
+        for each in range(0, len(args)):
+            if isinstance(args[each], int):
                 self.result += args[each]
-            if isinstance(args[each], list):
+            if isinstance(args[each], list) or isinstance(args[each],tuple):
                 for li in args[each]:
                     self.result += li
-            if isinstance(args[each], tuple):
-                for ti in args[each]:
-                    self.result += ti
         return self
     def subtract(self, *args):
-        for each in range(0,len(args)):
+        for each in range(0, len(args)):
             if type(args[each]) == int:
                 self.result -= args[each]
-            if isinstance(args[each], list):
+            if isinstance(args[each], list) or isinstance(args[each],tuple):
                 for li in args[each]:
                     self.result -= li
-            if isinstance(args[each], tuple):
-                for ti in args[each]:
-                    self.result -= ti
         return self
 
 # print MathDojo2().add(1).add(1).result
