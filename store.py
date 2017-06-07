@@ -37,6 +37,8 @@ class Product(object):
 def xstr(s):
     return '' if s is None else str(s)
 
+x = 3
+
 # Create products
 PILOT_METROPOLITAN_ORANGE = Product('Pilot', 'fountain pen', 200,
                                     'Metropolitan', 'orange')
