@@ -32,15 +32,15 @@ class MathDojo2(object):
         for each in range(0, len(args)):
             if isinstance(args[each], int):
                 self.result += args[each]
-            if isinstance(args[each], list) or isinstance(args[each],tuple):
+            if isinstance(args[each], list) or isinstance(args[each], tuple):
                 for li in args[each]:
                     self.result += li
         return self
     def subtract(self, *args):
         for each in range(0, len(args)):
-            if type(args[each]) == int:
+            if isinstance(args[each], int):
                 self.result -= args[each]
-            if isinstance(args[each], list) or isinstance(args[each],tuple):
+            if isinstance(args[each], list) or isinstance(args[each], tuple):
                 for li in args[each]:
                     self.result -= li
         return self
