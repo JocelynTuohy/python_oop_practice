@@ -24,27 +24,46 @@ class Call(object):
 # CallCenter Class
 class CallCenter(object):
     def __init__(self, *calls):
-        self.calls = []
+        self.call_list = []
         for each in calls:
-            self.calls.append(each)
+            self.call_list.append(each)
         self.resizeQueue()
     def resizeQueue(self):
-        self.queue_size = len(self.calls)
+        self.queue_size = len(self.call_list)
         return self
     def add(self, call):
         if isinstance(call, Call):
-            self.calls.append(call)
+            self.call_list.append(call)
             self.resizeQueue()
         return self
     def remove(self):
-        self.calls.pop(0)
+        self.call_list.pop(0)
         self.resizeQueue()
         return self
     def info(self):
         print 'Queue Length:', str(self.queue_size)
         for each in range(0, self.queue_size):
-            print str(each + 1) + ': ' + (self.calls[each].name + ' ' +
-                                          self.calls[each].phone_number)
+            print str(each + 1) + ': ' + (self.call_list[each].name + ' ' +
+                                          self.call_list[each].phone_number)
+        return self
+
+    # Ninja Level
+    # Add a method to the call center class that can find and remove a call from
+    # the queue according to the phone number of the caller.
+    def removeThisCall(self, this_phone_number):
+        for each in range(0, self.queue_size):
+            if this_phone_number == self.call_list[each].phone_number:
+                self.call_list.pop(each)
+                self.resizeQueue()
+                # DON'T FORGET TO BREAK OUT OF THE LOOP (EACH STOPS EXISTING)
+                return self
+        return self
+
+    # Hacker Level
+    # Add a method to the call center that sorts the calls in the queue
+    # according to time of call in ascending order.
+    def sortQueue(self):
+        self.call_list.sort(key=lambda x: x.timestamp, reverse=False)
 
 amanda = Call('Amanda', '2065556575', '13.45', 'there is fluoride in the water')
 bernard = Call('Bernard', '1111111111', '0838', 'i lost my cat')
@@ -59,4 +78,10 @@ best_call_center_ever.info()
 best_call_center_ever.remove()
 best_call_center_ever.info()
 best_call_center_ever.add(amanda)
+best_call_center_ever.info()
+# Test Ninja Level
+best_call_center_ever.removeThisCall('9999999999')
+best_call_center_ever.info()
+# Test Hacker Level
+best_call_center_ever.sortQueue()
 best_call_center_ever.info()
